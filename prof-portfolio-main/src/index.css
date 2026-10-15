@@ -1,0 +1,56 @@
+:root {
+  --primary-color: #255674;    /* Deep Ocean Steel Blue */
+  --primary-dark: #183a4f;     /* Darker Steel Blue */
+  --secondary-color: #3978a1;  /* Cyan / Steel Blue Accent */
+  --accent-color: #3978a1;     /* Accent Blue */
+  --dark-bg: #14222d;          /* Dark Accent */
+  --dark-surface: #1c2d3a;     /* Dark Surface */
+  --text-main: #212529;
+  --text-light: #6c757d;
+  --bg-light: #f8f9fa;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(37, 86, 116, 0.08);
+  --shadow-lg: 0 10px 25px rgba(37, 86, 116, 0.12);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #255674;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #183a4f;
+}
