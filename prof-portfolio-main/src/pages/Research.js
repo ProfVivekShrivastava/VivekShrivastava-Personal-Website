@@ -54,10 +54,16 @@ const researchData = [
 const Research = () => {
   const [research] = useState(researchData);
 
+  // Badge styles drawn from the Midnight Navy & Antique Gold palette
   const statusColors = {
-    'Completed': '#28a745',
-    'Ongoing': '#255674',
-    'Future': '#d97706'
+    'Completed': { background: 'var(--color-navy)', color: 'var(--color-text-primary-dark)' },
+    'Ongoing': { background: 'var(--color-gold)', color: 'var(--color-navy)' },
+    'Future': { background: 'var(--color-navy-slate)', color: 'var(--color-text-primary-dark)' }
+  };
+
+  const defaultStatusStyle = {
+    background: 'var(--color-navy-slate)',
+    color: 'var(--color-text-primary-dark)'
   };
 
   return (
@@ -91,7 +97,7 @@ const Research = () => {
                   <div className="research-header">
                     <div 
                       className="status-badge"
-                      style={{ backgroundColor: statusColors[project.status] }}
+                      style={statusColors[project.status] || defaultStatusStyle}
                     >
                       {project.status} • {project.year}
                     </div>

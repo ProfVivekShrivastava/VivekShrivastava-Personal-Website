@@ -92,7 +92,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p>&copy; {new Date().getFullYear()} Official Website of Prof. (Dr.) Vivek Shrivastava. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Official Website of Dr. Vivek Shrivastava. All rights reserved.</p>
           <p className="footer-credits">Professor & Dean — NIT Uttarakhand</p>
         </div>
       </div>

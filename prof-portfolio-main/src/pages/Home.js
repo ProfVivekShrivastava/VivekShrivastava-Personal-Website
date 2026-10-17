@@ -6,8 +6,8 @@ import './Home.css';
 
 const Home = () => {
   const [profile] = React.useState({
-    name: 'Prof. Vivek Shrivastava',
-    title: 'Professor',
+    name: 'Dr. Vivek Shrivastava',
+    title: 'Professor & Dean',
     department: 'Department of Electrical and Electronics Engineering',
     institution: 'National Institute of Technology (NIT) Uttarakhand',
     researchInterests: [

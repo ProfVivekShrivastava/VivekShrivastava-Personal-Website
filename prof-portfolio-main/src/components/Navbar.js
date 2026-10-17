@@ -30,8 +30,13 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
+          <img
+            src={`${process.env.PUBLIC_URL}/nituk-logo.png`}
+            alt=""
+            className="navbar-emblem"
+          />
           <div className="logo-text-group">
-            <span className="logo-text">Prof. (Dr.) Vivek Shrivastava</span>
+            <span className="logo-text">Dr. Vivek Shrivastava</span>
             <span className="logo-subtext">NIT Uttarakhand</span>
           </div>
         </Link>

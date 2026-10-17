@@ -188,14 +188,20 @@ const Teaching = () => {
   ]);
 
 
+  // Badge styles drawn from the Midnight Navy & Antique Gold palette
   const levelColors = {
-    'Undergraduate': '#0066cc',
-    'Postgraduate': '#28a745',
-    'Doctoral': '#dc3545',
-    'International': '#9c27b0',
-    'National': '#ff9800',
-    'University': '#607d8b',
-    'State': '#795548'
+    'Undergraduate': { background: 'var(--color-navy-slate)', color: 'var(--color-text-primary-dark)' },
+    'Postgraduate': { background: 'var(--color-navy-secondary)', color: 'var(--color-text-primary-dark)' },
+    'Doctoral': { background: 'var(--color-gold)', color: 'var(--color-navy)' },
+    'International': { background: 'var(--color-gold)', color: 'var(--color-navy)' },
+    'National': { background: 'var(--color-navy)', color: 'var(--color-text-primary-dark)' },
+    'University': { background: 'var(--color-navy-slate)', color: 'var(--color-text-primary-dark)' },
+    'State': { background: 'var(--color-navy-secondary)', color: 'var(--color-text-primary-dark)' }
+  };
+
+  const defaultLevelStyle = {
+    background: 'var(--color-navy-slate)',
+    color: 'var(--color-text-primary-dark)'
   };
 
   const typeIcons = {
@@ -279,7 +285,7 @@ const Teaching = () => {
                       <div className="course-header">
                         <div 
                           className="course-level"
-                          style={{ backgroundColor: levelColors[course.level] || '#6c757d' }}
+                          style={levelColors[course.level] || defaultLevelStyle}
                         >
                           {course.level}
                         </div>
@@ -337,7 +343,7 @@ const Teaching = () => {
                         <div className="conference-header">
                           <div 
                             className="conference-level"
-                            style={{ backgroundColor: levelColors[conf.level] || '#6c757d' }}
+                            style={levelColors[conf.level] || defaultLevelStyle}
                           >
                             {conf.level}
                           </div>

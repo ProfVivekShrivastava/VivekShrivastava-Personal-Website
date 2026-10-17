@@ -752,7 +752,7 @@ const Publications = () => {
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="publication-link"
-                        style={{ color: 'var(--primary-color, #2c3e50)', fontWeight: 500, textDecoration: 'underline' }}
+                        style={{ color: 'var(--primary-color)', fontWeight: 500, textDecoration: 'underline' }}
                       >
                         View Citation Source ↗
                       </a>
