@@ -61,7 +61,7 @@
   gap: 1.5rem;
 }
 
-.contact-item {
+.footer-contact .contact-item {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
@@ -72,19 +72,19 @@
   transition: all 0.3s ease;
 }
 
-.contact-item:hover {
+.footer-contact .contact-item:hover {
   background: var(--color-navy-slate);
   transform: translateX(5px);
 }
 
-.contact-icon {
+.footer-contact .contact-icon {
   color: var(--color-gold);
   font-size: 1.1rem;
   margin-top: 0.2rem;
   flex-shrink: 0;
 }
 
-.contact-item p {
+.footer-contact .contact-item p {
   color: var(--color-text-primary-dark);
   line-height: 1.5;
   margin: 0;
@@ -210,7 +210,7 @@
     text-align: center;
   }
 
-  .contact-item {
+  .footer-contact .contact-item {
     text-align: left;
     flex-direction: row;
     justify-content: flex-start;
@@ -243,19 +243,15 @@
     text-align: center;
   }
 
-  .contact-item {
-    flex-direction: column;
-    text-align: center;
+  .footer-contact .contact-item {
+    flex-direction: row;
+    text-align: left;
     gap: 0.8rem;
   }
 
-  .contact-icon {
-    align-self: center;
-  }
-
-  .contact-item > div {
+  .footer-contact .contact-item > div {
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   .footer-links a {
