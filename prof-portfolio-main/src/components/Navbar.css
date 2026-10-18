@@ -136,7 +136,6 @@
   border-radius: var(--radius-sm);
   width: 42px;
   height: 42px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -228,7 +227,7 @@
   }
 
   .navbar-menu {
-    position: fixed;
+    position: absolute;
     left: -100%;
     top: 100%;
     flex-direction: column;
