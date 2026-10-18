@@ -1,0 +1,771 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FaFileAlt } from 'react-icons/fa';
+import './Publications.css';
+
+const publicationsData = [
+  {
+    "title": "A Decision-Making Framework for Electromagnetic Pulse Hardening Prioritisation of Critical\n                    Facilities",
+    "year": 2026,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:kw52XkFRtyQC"
+  },
+  {
+    "title": "A Decision-Making Framework for Electromagnetic Pulse Hardening Prioritisation of Critical\n                    Facilities",
+    "year": null,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:1taIhTC69MYC"
+  },
+  {
+    "title": "A Case Study on Corrective Measures of Secondary Control Assisted Microgrids.",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:MpfHP-DdYjUC"
+  },
+  {
+    "title": "A comparative study of maximum power point tracking methods for a photovoltaic-based water pumping\n                    system",
+    "year": 2014,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:K3LRdlH-MEoC"
+  },
+  {
+    "title": "A comparative study of maximum power point tracking methods for a photovoltaic-based water pumping\n                    system.",
+    "year": 2014,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:j7_hQOaDUrUC"
+  },
+  {
+    "title": "A Comprehensive Study on Electricity Theft Detection Using Data Analysis",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:4vMrXwiscB8C"
+  },
+  {
+    "title": "A computational examination of lead free Cs2PtI6 based perovskite solar cell with investigation of\n                    several carrier transport materials",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:u-coK7KVo8oC"
+  },
+  {
+    "title": "A fuzzy logic based sensorless induction motor drive supplied from a photovoltaic source",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:nrtMV_XWKgEC"
+  },
+  {
+    "title": "A novel approach of input variable selection for ANN based load forecasting",
+    "year": 2008,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:LPZeul_q3PIC"
+  },
+  {
+    "title": "A PSO based search for optimal tuning and fixing of UPFC to improve usefulness of distribution\n                    system",
+    "year": 2018,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:p__nRnzSRKYC"
+  },
+  {
+    "title": "A Review of Li-Ion Battery's Thermal Runaway Mitigation Strategies with an Eye towards a Smarter\n                    BTMS",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:DJbcl8HfkQkC"
+  },
+  {
+    "title": "A review on distributed generation definitions and DG impacts on distribution system",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:XiVPGOgt02cC"
+  },
+  {
+    "title": "A Review: Integration of Distributed Generation in Distribution System",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:umqufdRvDiIC"
+  },
+  {
+    "title": "A Wideband Star-Shaped Rectenna for RF Energy Harvesting in GSM Band",
+    "year": 2020,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:foquWX3nUaYC"
+  },
+  {
+    "title": "Accelerated life testing and performance evaluation of smart pressure transmitters for use in\n                    nuclear power plants",
+    "year": 2018,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:b1wdh0AR-JQC"
+  },
+  {
+    "title": "Advance deep convolution neural network for multiple fault diagnosis of induction motor",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:cWzG1nlazyYC"
+  },
+  {
+    "title": "Advancing Battery Safety: Machine Learning-Driven Thermal Management and Cloud-Based Analytics.",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:nRpfm8aw39MC"
+  },
+  {
+    "title": "Allocation of UPFC in distribution system to minimize the losses",
+    "year": 2014,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:wbdj-CoPYUoC"
+  },
+  {
+    "title": "An Approach to Optimize Query Using Rank Aware Scoring Function",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:BJbdYPG6LGMC"
+  },
+  {
+    "title": "An assessment of electrical load forecasting using artificial neural network",
+    "year": 2012,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&sortby=title&citation_for_view=xR0COBoAAAAJ:eJXPG6dFmWUC"
+  },
+  {
+    "title": "An Assessment of Two-Dimensional Warranty Forecasting Model",
+    "year": 2008,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:0izLItjtcgwC"
+  },
+  {
+    "title": "An improve efficiency of li-ion batteries using optimization technique",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:W5xh706n7nkC"
+  },
+  {
+    "title": "An improve efficiency of li-ion batteries with harmony search algorithm",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:uLbwQdceFCQC"
+  },
+  {
+    "title": "Analysis of boost converter with input source power conditioning",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:tKAzc9rXhukC"
+  },
+  {
+    "title": "Analysis of Energy Storage System for Wind Power Generation with application of Bidirectional\n                    Converter",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:7T2F9Uy0os0C"
+  },
+  {
+    "title": "Analysis of Various Conditional Configuration of Load Bus using Method of Moment",
+    "year": 2008,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:4fGpz3EwCPoC"
+  },
+  {
+    "title": "Analytical behavior of brushless doubly fed electric variable transmission for wind power\n                    generation",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:uJ-U7cs_P_0C"
+  },
+  {
+    "title": "Analyzing Loss Mechanism of High Frequency Ferrite Core Transformer in Power Electronics Based\n                    Converter",
+    "year": 2026,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:WC23djZS0W4C"
+  },
+  {
+    "title": "Application of modified clonal PSO in distributed generator placement for enhancement of efficiency\n                    and voltage stability in distribution system",
+    "year": 2021,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:5qfkUJPXOUwC"
+  },
+  {
+    "title": "Applications of meta-heuristics in renewable energy systems",
+    "year": 2020,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:ruyezt5ZtCIC"
+  },
+  {
+    "title": "Artificial immune system based approach for size and location optimization of distributed\n                    generation in distribution system",
+    "year": 2019,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:TIZ-Mc8IlK0C"
+  },
+  {
+    "title": "Artificial Intelligence for Solar Photovoltaic Systems: Approaches, Methodologies, and\n                    Technologies",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:IUKN3-7HHlwC"
+  },
+  {
+    "title": "Assessment of a fuzzy logic based MRAS observer used in a photovoltaic array supplied AC drive",
+    "year": 2014,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:BrmTIyaxlBUC"
+  },
+  {
+    "title": "Augmented networks component importance measure under common cause failures",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:PaBasH6fAo0C"
+  },
+  {
+    "title": "Baseline Modeling and Comparative Evaluation of Control Strategies for Utility-Tied and Islanded\n                    Microgrid with Bidirectional Electric Vehicle Integration",
+    "year": 2026,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:MhiOAD_qIWkC"
+  },
+  {
+    "title": "Battery energy storage technology integrated for power system reliability improvement",
+    "year": 2018,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:4MWp96NkSFoC"
+  },
+  {
+    "title": "Bayesian belief network as a tool for load forecasting",
+    "year": 2009,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:LI9QrySNdTsC"
+  },
+  {
+    "title": "Bidirectional Converter for V2G Application of Reactive Power Compensation",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:dBIO0h50nwkC"
+  },
+  {
+    "title": "Biological approaches to nanoparticles synthesis and their applications in the development of\n                    herbal formulations",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:2tRrZ1ZAMYUC"
+  },
+  {
+    "title": "Candidate project selection in cross project defect prediction using hybrid method",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:9c2xU6iGI7YC"
+  },
+  {
+    "title": "Case Study on Modernization of a Micro-Grid and Its Performance Analysis Employing Solar PV\n                    Units",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:IRz6iEL74y4C"
+  },
+  {
+    "title": "Communication and Intelligent Systems",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:Ehil0879vHcC"
+  },
+  {
+    "title": "Communication and Intelligent Systems",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:P7Ujq4OLJYoC"
+  },
+  {
+    "title": "Communication and Intelligent Systems: Proceedings of ICCIS 2022, Volume 2",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:lvd772isFD0C"
+  },
+  {
+    "title": "Comparison of analytical and heuristic techniques for multiobjective optimization in power\n                    system",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:UHK10RUVsp4C"
+  },
+  {
+    "title": "Comparison of Performance Analysis of Optimal Controllers for Frequency Regulation of Three-Area\n                    Power System",
+    "year": 2020,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:k8Z6L05lTy4C"
+  },
+  {
+    "title": "Compensation techniques to maintain the line parameters of traction power supply system using FACTS\n                    device",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:86PQX7AUzd4C"
+  },
+  {
+    "title": "Condition Monitoring of Power Electronic Devices-A Review",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:2VqYfGB8ITEC"
+  },
+  {
+    "title": "Cross-Project Defect Prediction by Using Optimized Light Gradient Boosting Machine Algorithm",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:mlAyqtXpCwEC"
+  },
+  {
+    "title": "Data Fusion-Based Smart Condition Monitoring of Critically Applied Rotating Machines",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:OTTXONDVkokC"
+  },
+  {
+    "title": "Deep optimal feature extraction and selection-based motor fault diagnosis using vibration",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:OP4eGU-M3BUC"
+  },
+  {
+    "title": "Delay testable enhanced scan flip-flop: Dft for high fault coverage",
+    "year": 2011,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:iH-uZ7U-co4C"
+  },
+  {
+    "title": "Design and assessment of solar photovoltaic system for a village of Rajasthan",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:XD-gHx7UXLsC"
+  },
+  {
+    "title": "Design Methodology of Single and Multi-Winding Coupled Inductor in Switching Converters",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:QYdC8u9Cj1oC"
+  },
+  {
+    "title": "Design of Controller for Brushless DC Motor Using a Hybrid Optimization Technique",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:yFnVuubrUp4C"
+  },
+  {
+    "title": "Development of Bayesian belief network model for electrical load demand",
+    "year": 2010,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:4fKUyHm3Qg0C"
+  },
+  {
+    "title": "DGA Based Transformer Fault Analysis Using Machine Learning",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:_OXeSy2IsFwC"
+  },
+  {
+    "title": "Distributed generation integration optimization using fuzzy logic controller.",
+    "year": 2019,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:kuK5TVdYjLIC"
+  },
+  {
+    "title": "Early fault detection model using integrated and cost-effective test case prioritization",
+    "year": 2011,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:fQNAKQ3IYiAC"
+  },
+  {
+    "title": "Economic comparison of solar PV and diesel water pumping system",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:uWiczbcajpAC"
+  },
+  {
+    "title": "Economic viability solar PV power plant in distribution system",
+    "year": 2019,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:MLfJN-KU85MC"
+  },
+  {
+    "title": "Efficacy of different rule based fuzzy logic controllers for induction motor drive",
+    "year": 2012,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:TFP_iSt0sucC"
+  },
+  {
+    "title": "Efficient condition monitoring of off shore wind turbines using deep networks",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:LhH-TYMQEocC"
+  },
+  {
+    "title": "Efficient random forest algorithm for multi-objective optimization in software defect prediction",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:ODE9OILHJdcC"
+  },
+  {
+    "title": "Elimination of output gating performance overhead for critical paths in scan test",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:eflP2zaiRacC"
+  },
+  {
+    "title": "Empowering the future: a comprehensive review of cutting‐edge battery technologies",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:7BrZ7Jt4UNcC"
+  },
+  {
+    "title": "Enselect: a Robust Ensemble Feature Selection Method for Cross Project Defect Prediction",
+    "year": 2026,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:WHdLCjDvYFkC"
+  },
+  {
+    "title": "Feature Selection with Stochastic Hill-Climbing Algorithm in Cross Project Defect Prediction",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:_5tno0g5mFcC"
+  },
+  {
+    "title": "Flip–flop selection for partial enhance scan chain using DTESFF for high transition delay fault\n                    coverage",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:bEWYMUwI8FkC"
+  },
+  {
+    "title": "Fuzzy Logic Based Analysis of Dissolved Decay Contents in Transformer Oil",
+    "year": 2019,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:VaXvl8Fpj5cC"
+  },
+  {
+    "title": "Grid Integrated 10kW Solar Photovoltaic System Using Conventional Controlling Techniques",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:HIFyuExEbWQC"
+  },
+  {
+    "title": "GRU-Powered Cloud Framework for Advanced Analytics of lithium iron phosphate Cell",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:FiytvqdAVhgC"
+  },
+  {
+    "title": "Guardians of Energy: A Machine Learning Approach to Enhance Battery Safety",
+    "year": null,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:1lhNe0rCu4AC"
+  },
+  {
+    "title": "Hybrid multi-model feature fusion-based vibration monitoring for rotating machine fault\n                    diagnosis",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:OcBU2YAGkTUC"
+  },
+  {
+    "title": "Illuminating Urban Landscapes using IoT Based Approach for Smart Street Lighting",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:GFxP56DSvIMC"
+  },
+  {
+    "title": "Impact of semiconductor devices on voltage stability of distribution system",
+    "year": 2019,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:gsN89kCJA0AC"
+  },
+  {
+    "title": "Improvement in efficiency of PV module using soft computing based MPPT",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:_Ybze24A_UAC"
+  },
+  {
+    "title": "Improvement in power sharing performance in an AC microgrid through PI controller approach under\n                    different load condition",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:IaI1MmNe2tcC"
+  },
+  {
+    "title": "Installation of DG for optimal demand compensation",
+    "year": 2014,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:bnK-pcrLprsC"
+  },
+  {
+    "title": "Installation of DG for Optimal Demand Compensation",
+    "year": null,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:OR75R8vi5nAC"
+  },
+  {
+    "title": "Intelligent multiple fault diagnosis for predictive maintenance of induction motor",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:mNrWkgRL2YcC"
+  },
+  {
+    "title": "Investigations on energy efficient sensorless induction motor drive",
+    "year": 2015,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:kRWSkSYxWN8C"
+  },
+  {
+    "title": "Leveraging controllability measures for high transition delay test coverage in DTESFF based partial\n                    enhanced scan design",
+    "year": 2020,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:rmuvC79q63oC"
+  },
+  {
+    "title": "Lithium-Ion Battery’s SOH Estimation Using Machine Learning with Multi-Channel Charging Profiles",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:yqoGN6RLRZoC"
+  },
+  {
+    "title": "Load Flow Analysis using Method of Moments",
+    "year": 2007,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:_FM0Bhl9EiAC"
+  },
+  {
+    "title": "Modeling and Analysis of Restoration Control in Parallel Microsource Inverters: A Case Study",
+    "year": 2026,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:7wO8s98CvbsC"
+  },
+  {
+    "title": "Modelling and Control of Microgrids in an Offgrid Operating Scenario: A Case Study",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:Aul-kAQHnToC"
+  },
+  {
+    "title": "Modelling of speed controller for industrial applications: a two mass drive system",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:0KyAp5RtaNEC"
+  },
+  {
+    "title": "Non Invasive Fault Detection of Offshore Wind Turbines Using Deep Network-Based Thermogram\n                    Features",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:8xutWZnSdmoC"
+  },
+  {
+    "title": "Opportunities and challenges of PV technology in power system",
+    "year": 2021,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:oNZyr7d5Mn4C"
+  },
+  {
+    "title": "Optimal location and sizing of DG in distribution system and its cost-benefit analysis",
+    "year": 2019,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:a3BOlSfXSfwC"
+  },
+  {
+    "title": "Optimal location and sizing of DG in distribution system and its cost–benefit analysis",
+    "year": 2018,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:L7CI7m0gUJcC"
+  },
+  {
+    "title": "Optimal Placement of DG for Reliability Improvement in Distribution System",
+    "year": 2015,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:YohjEiUPhakC"
+  },
+  {
+    "title": "Optimal sitting and sizing of capacitor using iterative search method for enhancement of\n                    reliability of distribution system",
+    "year": 2018,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:ML0RJ9NH7IQC"
+  },
+  {
+    "title": "Output gating performance overhead elimination for scan test",
+    "year": 2015,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:B3FOqHPlNUQC"
+  },
+  {
+    "title": "Particle swarm optimization of BLDC motor with fuzzy logic controller for speed improvement",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:EkHepimYqZsC"
+  },
+  {
+    "title": "Performance analysis of a water pumping system supplied by a photovoltaic generator with different\n                    maximum power point tracking techniques",
+    "year": 2014,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:08ZZubdj9fEC"
+  },
+  {
+    "title": "Performance analysis of electric vehicle motor controller with different controllers",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:sNmaIFBj_lkC"
+  },
+  {
+    "title": "Performance analysis of electric vehicle motor controller with different controllers",
+    "year": null,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:XvxMoLDsR5gC"
+  },
+  {
+    "title": "Performance analysis of fuzzy based sensorless induction motor drive with photovoltaic source",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=20&pagesize=80&sortby=title&citation_for_view=xR0COBoAAAAJ:HbR8gkJAVGIC"
+  },
+  {
+    "title": "Performance analysis of grid-connected 10.6 kW (commercial) solar PV power generation system",
+    "year": 2019,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:WZBGuue-350C"
+  },
+  {
+    "title": "Performance analysis of hybrid network of Indian traction power system using renewable energy\n                    sources",
+    "year": 2016,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:_axFR9aDTf0C"
+  },
+  {
+    "title": "Performance analysis of induction motor drive with optimal rotor flux for energy efficient\n                    operation",
+    "year": 2014,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:l7t_Zn2s7bgC"
+  },
+  {
+    "title": "Performance and reliability investigation of practical microgrid with photovoltaic units",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:a9-T7VOCCH8C"
+  },
+  {
+    "title": "Performance evaluation of delay testable enhanced scan flip-flop",
+    "year": 2012,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:r0BpntZqJG4C"
+  },
+  {
+    "title": "Performance Evaluation of Reduced Rule Base Fuzzy Logic Controller for Indirect Vector Controlled\n                    Induction Motor Drive",
+    "year": 2012,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:sSrBHYA8nusC"
+  },
+  {
+    "title": "Performance Evaluation Of Reduced Rule Based Fuzzy Logic Controller For Vector Control\n                    Induction Motor Drive",
+    "year": 2012,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:HtEfBTGE9r8C"
+  },
+  {
+    "title": "Performance Improvement in Droop Controlled Islanded Microgrids via Selective Harmonic Control",
+    "year": 2024,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:ZzlSgRqYykMC"
+  },
+  {
+    "title": "Performance of smart pressure transmitters under radiation ageing environment in NPPs",
+    "year": 2020,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:i2xiXl-TujoC"
+  },
+  {
+    "title": "Power Engineering and Intelligent Systems",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:fbc8zXXH2BUC"
+  },
+  {
+    "title": "Power Engineering and Intelligent Systems: Proceedings of PEIS 2025, Volume 1",
+    "year": 2026,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:5MTHONV0fEkC"
+  },
+  {
+    "title": "Power Engineering and Intelligent Systems: Proceedings of PEIS 2025, Volume 3",
+    "year": 2025,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:7H_MAutzIkAC"
+  },
+  {
+    "title": "Power Management & Quality Analysis of Battery Storage Based Renewable Energy Generation System\n                    for Utility Bus",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:bKqednn6t2AC"
+  },
+  {
+    "title": "Probabilistic Load Flow Calculation using Method of Moments",
+    "year": 2007,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:8d8msizDQcsC"
+  },
+  {
+    "title": "Probabilistic Load Flow Computation using Method of Moments & Cumulants",
+    "year": 2007,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:LO7wyVUgiFcC"
+  },
+  {
+    "title": "Probabilistic Power System Planning using Bayesian Belief Networks",
+    "year": 2006,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:GtLg2Ama23sC"
+  },
+  {
+    "title": "Probabilistic power system planning using soft computing methods",
+    "year": 2009,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:KbBQZpvPDL4C"
+  },
+  {
+    "title": "Prognostics and health management of induction motor by supervised learning classifiers",
+    "year": 2021,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:PVjk1bu6vJQC"
+  },
+  {
+    "title": "Reliability Improvement of Distribution System by Optimal Sitting and Sizing of Disperse\n                    Generation",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:3htObqc8RwsC"
+  },
+  {
+    "title": "Reliability Issues in a Deregulated Power System",
+    "year": 2005,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:9pM33mqn1YgC"
+  },
+  {
+    "title": "Signals, Machines and Automation",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:nZcligLrVowC"
+  },
+  {
+    "title": "Signals, Machines and Automation: Select Proceedings of SIGMA 2022",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:HeT0ZceujKMC"
+  },
+  {
+    "title": "Simulation and modeling of a Constant voltage controller based solar powered water pumping\n                    system",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:D_sINldO8mEC"
+  },
+  {
+    "title": "Single Phase Induction Motor Drive with Simplified FLC for Variable Speed Operations",
+    "year": 2011,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:NXb4pA-qfm4C"
+  },
+  {
+    "title": "Single Solution for Control and Synchronization of Inverters in Microgrids",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:F9fV5C73w3QC"
+  },
+  {
+    "title": "Smart classifier based prognostics and health management of induction motor",
+    "year": 2021,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:XoXfffV-tXoC"
+  },
+  {
+    "title": "Solar Powered Fuzzy Logic Controller based Vector Controlled Induction Motor Drive",
+    "year": 2013,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:8AbLer7MMksC"
+  },
+  {
+    "title": "Speed control of electric vehicle using fuzzy logic controller",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:URolC5Kub84C"
+  },
+  {
+    "title": "Synchronization of UPFC in Active Distribution Systems",
+    "year": null,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:r_AWSJRzSzQC"
+  },
+  {
+    "title": "Synchronization of UPFC in Active Distribution Systems",
+    "year": 2020,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:e_rmSamDkqQC"
+  },
+  {
+    "title": "Talo-calcaneal distraction Ilizarov frame: an ergonomic method to manage intra-articular fractures\n                    of calcaneum",
+    "year": 2021,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:0CzhzZyukY4C"
+  },
+  {
+    "title": "Technical analysis of solar pumping system based on irrigation requirement",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:9Nmd_mFXekcC"
+  },
+  {
+    "title": "Test and Testability for VLSI Circuits",
+    "year": 2003,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:FAceZFleit8C"
+  },
+  {
+    "title": "The Energy Mix: An Emerging Trend in Distribution System",
+    "year": 2023,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:yMeIxYmEMEAC"
+  },
+  {
+    "title": "Transfer learning based bearing and rotor fault diagnosis of induction motor",
+    "year": 2022,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:WJVC3Jt7v1AC"
+  },
+  {
+    "title": "Two-Dimensional Warranty Analysis And Forecasting For Automotive Components",
+    "year": 2007,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:anf4URPfarAC"
+  },
+  {
+    "title": "Viability of grid-connected solar PV system for a village of rajasthan",
+    "year": 2017,
+    "link": "/citations?view_op=view_citation&hl=en&user=xR0COBoAAAAJ&cstart=100&pagesize=100&sortby=title&citation_for_view=xR0COBoAAAAJ:AvfA0Oy_GE0C"
+  }
+];
+
+const Publications = () => {
+  const [publications] = useState(publicationsData);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredPublications = publications.filter(pub =>
+    pub.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="publications">
+      <section className="publications-hero">
+        <div className="section-container">
+          <h1 className="page-title">Publications</h1>
+          <p className="page-subtitle">
+            Scholarly articles and research contributions
+          </p>
+        </div>
+      </section>
+
+      <section className="publications-content">
+        <div className="section-container">
+          <div className="publications-controls">
+            <div className="search-box">
+              <input
+                type="text"
+                placeholder="Search publications by title..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
+            </div>
+          </div>
+
+          {filteredPublications.length === 0 ? (
+            <div className="no-publications">
+              <FaFileAlt size={60} />
+              <p>No publications found matching your criteria.</p>
+            </div>
+          ) : (
+            <div className="publications-list">
+              {filteredPublications.map((pub, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="publication-card"
+                >
+                  <div className="publication-header">
+                    {pub.year && <div className="publication-year">{pub.year}</div>}
+                  </div>
+
+                  <h3 className="publication-title">{pub.title}</h3>
+
+                  {pub.link && (
+                    <div className="publication-meta" style={{ marginTop: '1rem' }}>
+                      <a 
+                        href={`https://scholar.google.com${pub.link}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="publication-link"
+                        style={{ color: 'var(--primary-color)', fontWeight: 500, textDecoration: 'underline' }}
+                      >
+                        View Citation Source ↗
+                      </a>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Publications;
