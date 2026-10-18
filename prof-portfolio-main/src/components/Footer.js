@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaLinkedin, FaGraduationCap, FaUniversity, FaGoogle } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaMobileAlt, FaLinkedin, FaGraduationCap, FaUniversity, FaGoogle, FaOrcid } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
 
             <div className="contact-item">
-              <FaPhone className="contact-icon" />
+              <FaMobileAlt className="contact-icon" />
               <div>
                 <p><a href="tel:8800681277" style={{ color: 'inherit', textDecoration: 'none' }}>8800681277</a></p>
               </div>
@@ -72,6 +72,16 @@ const Footer = () => {
             >
               <FaGoogle />
               <span>Google Scholar</span>
+            </a>
+            <a 
+              href="https://orcid.org/0000-0003-4300-4784" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="ORCID" 
+              className="social-link"
+            >
+              <FaOrcid />
+              <span>ORCID</span>
             </a>
             <a 
               href="https://portfolios.nituk.ac.in/453/dr-vivek-shrivastava/personal-details" 

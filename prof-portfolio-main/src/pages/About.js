@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaGraduationCap, FaGoogle, FaLinkedin, FaUserTie, FaGlobe, FaPhone, FaUniversity } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaGraduationCap, FaGoogle, FaLinkedin, FaUserTie, FaGlobe, FaMobileAlt, FaUniversity, FaOrcid } from 'react-icons/fa';
 import './About.css';
 
 // Import your profile image - adjust the path according to your project structure
@@ -168,7 +168,7 @@ const About = () => {
                 </div>
 
                 <div className="contact-item">
-                  <FaPhone className="contact-icon" />
+                  <FaMobileAlt className="contact-icon" />
                   <a href={`tel:${profile.phone}`} style={{ color: 'inherit', textDecoration: 'none' }}>{profile.phone}</a>
                 </div>
 
@@ -196,6 +196,14 @@ const About = () => {
                   className="social-link"
                 >
                   <FaGoogle /> Google Scholar
+                </a>
+                <a 
+                  href="https://orcid.org/0000-0003-4300-4784" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="social-link"
+                >
+                  <FaOrcid /> ORCID
                 </a>
                 <a 
                   href="https://portfolios.nituk.ac.in/453/dr-vivek-shrivastava/personal-details" 
