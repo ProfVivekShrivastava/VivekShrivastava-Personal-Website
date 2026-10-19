@@ -43,9 +43,18 @@
   transform: translateY(-1px);
 }
 
+/* Emblem links to nituk.ac.in, name links to the NIT UK portfolio page */
+.navbar-emblem-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
 .logo-text-group {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 
 .logo-text {

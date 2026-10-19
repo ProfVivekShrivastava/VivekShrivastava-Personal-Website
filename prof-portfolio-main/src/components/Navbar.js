@@ -49,17 +49,30 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <img
-            src={`${process.env.PUBLIC_URL}/nituk-logo.png`}
-            alt=""
-            className="navbar-emblem"
-          />
-          <div className="logo-text-group">
+        <div className="navbar-logo">
+          <a
+            href="https://nituk.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="navbar-emblem-link"
+            aria-label="NIT Uttarakhand website"
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/nituk-logo.png`}
+              alt=""
+              className="navbar-emblem"
+            />
+          </a>
+          <a
+            href="https://portfolios.nituk.ac.in/453/dr-vivek-shrivastava/personal-details"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="logo-text-group"
+          >
             <span className="logo-text">Dr. Vivek Shrivastava</span>
             <span className="logo-subtext">NIT Uttarakhand</span>
-          </div>
-        </Link>
+          </a>
+        </div>
         
         <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
           {navLinks.map((link) => (
