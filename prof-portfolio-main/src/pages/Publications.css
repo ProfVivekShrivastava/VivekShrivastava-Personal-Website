@@ -31,6 +31,11 @@
   z-index: 2;
 }
 
+/* Golden page title, matching the site's accent theme */
+.publications-hero .page-title {
+  color: var(--color-gold);
+}
+
 .page-subtitle {
   font-size: 1.3rem;
   color: var(--color-text-secondary-dark);
