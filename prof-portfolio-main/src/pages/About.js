@@ -13,7 +13,7 @@ const About = () => {
     department: 'Department of Electrical Engineering',
     institution: 'National Institute of Technology (NIT) Uttarakhand',
     email: 'shvivek@nituk.ac.in',
-    phone: '8800681277',
+    phone: '+91 8800681277',
     address: 'Department of Electrical Engineering, National Institute of Technology, Uttarakhand, NH-58, Srinagar (Garhwal), Uttarakhand-246174, India',
     bio: 'Dr. Vivek Shrivastava possesses over two decades of diverse experience, spanning teaching, research, industry, and academic leadership roles in India, China, and the United States. Currently, he holds the position of Professor & Dean in the Department of Electrical and Electronics Engineering at the National Institute of Technology (NIT) Uttarakhand. Previously, he served at NIT Delhi for approximately seven years, assuming leadership positions such as Registrar, Dean (Research and Consultancy), Dean (Student Welfare), Dean (Faculty Welfare), and Head of the Department of Electrical Engineering. During his tenure, he fostered collaborations with industry and government organizations, contributing substantially to the institution’s growth. Dr. Shrivastava played a pivotal role in the development and implementation of the Five-Year Integrated B.Tech-M.Tech Programme (Electrical Engineering) and the Master’s program in Power Systems at Gautam Buddha University, Greater Noida. He also holds extensive experience in academic administration, having served as Faculty In-charge for Training and Placement, Library, and Nodal Officer for various projects, including TEQIP-III and RUSA. His contributions extend to committees affiliated with organizations such as AICTE and UGC. Prior to his academic career, Dr. Shrivastava held the position of System Reliability Engineer at SanDisk Semiconductors in Shanghai, China, and the United States. His contributions at SanDisk significantly contributed to the design and development of memory products. In research and consultancy, Dr. Shrivastava has secured substantial funding for projects from esteemed organizations such as the Ministry of Human Resource Development (Government of India) and the Board of Research in Nuclear Sciences (BRNS), a subsidiary of the Bhabha Atomic Research Centre. His scholarly contributions include over 100 journal articles, conference papers, and book chapters. Additionally, he has supervised six Ph.D. and 20 Master’s students, with several ongoing Ph.D. supervisions. Dr. Shrivastava holds the positions of Editor/Associate Editor for the International Journal of Swarm Intelligence (IJSI) and the International Journal of System Assurance Engineering and Management. He is a Fellow of the Institution of Engineers (India) and a Senior Member of the Institute of Electrical and Electronics Engineers (IEEE).',
     researchInterests: [
@@ -169,7 +169,7 @@ const About = () => {
 
                 <div className="contact-item">
                   <FaMobileAlt className="contact-icon" />
-                  <a href={`tel:${profile.phone}`} style={{ color: 'inherit', textDecoration: 'none' }}>{profile.phone}</a>
+                  <a href={`tel:${profile.phone.replace(/\s/g, '')}`} style={{ color: 'inherit', textDecoration: 'none' }}>{profile.phone}</a>
                 </div>
 
                 <div className="contact-item">

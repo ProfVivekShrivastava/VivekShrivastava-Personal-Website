@@ -23,7 +23,7 @@ const Footer = () => {
             <div className="contact-item">
               <FaMobileAlt className="contact-icon" />
               <div>
-                <p><a href="tel:8800681277" style={{ color: 'inherit', textDecoration: 'none' }}>8800681277</a></p>
+                <p><a href="tel:+918800681277" style={{ color: 'inherit', textDecoration: 'none' }}>+91 8800681277</a></p>
               </div>
             </div>
             
