@@ -146,6 +146,22 @@
   transform: scale(1.05);
 }
 
+/* Desktop: hamburger sits at the rightmost edge of the header but is purely
+   cosmetic (the full nav menu is already visible on desktop) */
+@media (min-width: 901px) {
+  .navbar-toggle {
+    display: flex;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .navbar-toggle:hover {
+    color: var(--color-navy);
+    background: var(--navy-tint-08);
+    transform: none;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .navbar-container {

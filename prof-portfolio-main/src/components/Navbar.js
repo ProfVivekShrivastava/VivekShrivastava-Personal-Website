@@ -6,6 +6,9 @@ import './Navbar.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 600px)').matches
+  );
   const location = useLocation();
 
   useEffect(() => {
@@ -16,7 +19,24 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 600px)');
+    const handleBreakpointChange = (event) => {
+      setIsMobile(event.matches);
+      if (!event.matches) setIsOpen(false);
+    };
+    mediaQuery.addEventListener('change', handleBreakpointChange);
+    return () => mediaQuery.removeEventListener('change', handleBreakpointChange);
+  }, []);
+
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleToggleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleMenu();
+    }
+  };
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -54,7 +74,15 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="navbar-toggle" onClick={toggleMenu}>
+        <div
+          className="navbar-toggle"
+          onClick={toggleMenu}
+          onKeyDown={isMobile ? handleToggleKeyDown : undefined}
+          role={isMobile ? 'button' : undefined}
+          aria-label={isMobile ? (isOpen ? 'Close menu' : 'Open menu') : undefined}
+          aria-hidden={!isMobile}
+          tabIndex={isMobile ? 0 : -1}
+        >
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
